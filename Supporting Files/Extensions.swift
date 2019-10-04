@@ -51,43 +51,26 @@ enum StatusBarAlertType{
 }
 
 
-struct SFHFontFamily {
-    static let regular = "Verdana"
-    static let bold = "Verdana-Bold"
-    static let boldItalic = "Verdana-BoldItalic"
-    static let italic = "Verdana-Italic"
+
+enum AppFontFamily : String {
+    
+    case regular = "HelveticaNeue"
+    case medium = "HelveticaNeue-Medium"
+    case light = "HelveticaNeue-Light"
+    case thin = "HelveticaNeue-Thin"
+    case bold = "HelveticaNeue-Bold"
+    
 }
 
 extension UIFont {
     
     
-    @objc class func appFontRegular(ofSize size: CGFloat) -> UIFont
+    class func setFont(withFontFamily font: AppFontFamily, withSize size: CGFloat) -> UIFont
     {
         let modifiedSize = UIDevice.current.userInterfaceIdiom == .pad ? size * 1.9 : size * (UIScreen.main.bounds.width/320)
-        return UIFont(name: SFHFontFamily.regular, size: modifiedSize)!
+        return UIFont(name: font.rawValue, size: modifiedSize)!
     }
-    
-    @objc class func appFontBold(ofSize size: CGFloat) -> UIFont
-    {
-        let modifiedSize = UIDevice.current.userInterfaceIdiom == .pad ? size * 1.9 : size * (UIScreen.main.bounds.width/320)
-        return UIFont(name: SFHFontFamily.bold, size: modifiedSize)!
-        
-    }
-    
-    @objc class func appFontItalic(ofSize size: CGFloat) -> UIFont
-    {
-        let modifiedSize = UIDevice.current.userInterfaceIdiom == .pad ? size * 1.9 : size * (UIScreen.main.bounds.width/320)
-        return UIFont(name: SFHFontFamily.italic, size: modifiedSize)!
-        
-    }
-    
-    @objc class func appFontBoldItalic(ofSize size: CGFloat) -> UIFont
-    {
-        let modifiedSize = UIDevice.current.userInterfaceIdiom == .pad ? size * 1.9 : size * (UIScreen.main.bounds.width/320)
-        return UIFont(name: SFHFontFamily.boldItalic, size: modifiedSize)!
-    }
-    
-    
+
 }
 
 extension UIColor {
